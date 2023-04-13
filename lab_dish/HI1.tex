@@ -286,13 +286,10 @@ by a Raspberry Pi).
 \item {\tt LeuschNoise.off()} turns the noise source off.
 \end{enumerate}
 
-We also have an LO that you can shift around for calibration purposes.  It's actually the same
-Agilent frequency synthesizer you used in the horn lab, only we've unplugged it and moved it to Leuschner.  This
-means you can control it remotely with {\it ugradio.agilent}. 
- {\tt heiles} is the computer you are
-already logged into, we'll use the {\tt SynthDirect} interface:
+We also have an LO that you can shift around for calibration purposes.
+You can control it remotely with {\it ugradio.agilent}. 
 \begin{enumerate}
-\item {\tt ugradio.agilent.SynthDirect()} instantiates an interface to the LO
+\item {\tt ugradio.agilent.SynthClient()} instantiates an interface to the LO
 \item {\tt SynthClient.set\_frequency} changes the LO frequency.
 \end{enumerate}
 
@@ -301,7 +298,7 @@ spectrometer is controlled by the {\tt leuschner} module outside of {\tt ugradio
 As a work-around, we made a {\tt ugradio.leusch.Spectrometer} object that
 interacts with the Python 2 interface via the command line:
 \begin{enumerate}
-\item {\tt ugradio.leusch.Spectrometer(} instantiates an interface to the spectrometer
+\item {\tt ugradio.leusch.Spectrometer()} instantiates an interface to the spectrometer
 at the default IP address.
 \item {\tt Spectrometer.int\_time} tells you how long each spectrum is integrated for.
 \item {\tt Spectrometer.read\_spec('out.fits', N, (ra,dec), 'eq')} will read N spectra and
